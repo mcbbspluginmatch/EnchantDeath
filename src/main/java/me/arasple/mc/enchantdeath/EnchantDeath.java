@@ -15,19 +15,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * 附魔死亡 EnchantDeath
  *
- * hmmm
- *
- * 高度自定义 / 完善的系统 / 强大的拓展性 —— 死亡管理系统
- *
- * * 无依赖, 轻量级
- * * 所有消息均支持 JSON、PlaceholderAPI
- * * 每个世界可独立设置
- * * 自定义随机死亡消息, 支持一切死亡类型
- * * 自定义死亡后背包掉落方式
- * * 自定义死亡盒材质、取回方式、逾期时间, 高度可编辑
- * * 事件支持自定义后台拓展命令, 扣钱、加药水效果、增音效 一气呵成
- * * 死亡统计系统, 死亡排行榜. 提供 PlaceholderAPI变量
- *
  * @author Arasple (垃圾代码, 大佬勿喷)
  */
 public final class EnchantDeath extends JavaPlugin {
