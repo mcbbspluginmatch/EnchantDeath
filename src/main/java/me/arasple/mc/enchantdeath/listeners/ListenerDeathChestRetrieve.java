@@ -28,7 +28,7 @@ public class ListenerDeathChestRetrieve implements Listener {
     public void onTouch(PlayerInteractEvent e) {
         Player p = e.getPlayer();
 
-        if (!EnchantDeath.getServerVersion().startsWith("v1_8") && e.getHand() != EquipmentSlot.HAND) {
+        if (!EnchantDeath.getServerVersion().startsWith("v1_8_R1") && e.getHand() != EquipmentSlot.HAND) {
             return;
         }
 

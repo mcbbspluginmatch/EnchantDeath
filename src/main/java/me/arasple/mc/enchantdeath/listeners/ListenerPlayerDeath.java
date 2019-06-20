@@ -63,7 +63,7 @@ public class ListenerPlayerDeath implements Listener {
             }
             // 5. 生成死亡箱子
         } else if (keepInvType.equalsIgnoreCase("DEATHCHEST")) {
-            if (p.getInventory().getContents().length > 0) {
+            if (InvItemsUtils.skipEmpty(p.getInventory().getContents()).length > 0) {
                 long lasts = EDFiles.getSettings().getLong("DeathChest.expire", 600);
                 e.setKeepInventory(false);
                 DeathChest deathChest = new DeathChest(p.getUniqueId(), p.getLocation().getBlock().getLocation(), p.getInventory().getContents(), System.currentTimeMillis(), System.currentTimeMillis() + lasts * 1000);

@@ -46,14 +46,6 @@ public final class EnchantDeath extends JavaPlugin {
     }
 
     @Override
-    public void onLoad() {
-        checkServerVersion();
-    }
-
-    private void checkServerVersion() {
-    }
-
-    @Override
     public void onEnable() {
         register();
     }

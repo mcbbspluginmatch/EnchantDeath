@@ -3,6 +3,7 @@ package me.arasple.mc.enchantdeath.utils;
 import me.arasple.mc.enchantdeath.EDFiles;
 import me.arasple.mc.enchantdeath.hook.HookPlaceholderAPI;
 import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
