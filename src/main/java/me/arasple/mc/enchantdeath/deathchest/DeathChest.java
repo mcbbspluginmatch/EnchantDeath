@@ -6,7 +6,6 @@ import me.arasple.mc.enchantdeath.utils.Msger;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.SkullType;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
 import org.bukkit.inventory.ItemStack;
@@ -77,8 +76,8 @@ public class DeathChest {
         Block block = getBlock();
         String type = EDFiles.getSettings().getString("DeathChest.type");
 
-        if (!type.equalsIgnoreCase("PLAYER_HEAD")) {
-            if (Material.valueOf(type) != null && Material.valueOf(type).isBlock()) {
+        if (!type.equalsIgnoreCase("pHEAD")) {
+            if (Material.matchMaterial(type) != null && Material.matchMaterial(type).isBlock()) {
                 block.setType(Material.valueOf(type));
                 return;
             } else {
@@ -104,6 +103,10 @@ public class DeathChest {
 
     public Block getBlock() {
         return getLocation().getBlock();
+    }
+
+    public void delete() {
+        getBlock().setType(Material.AIR);
     }
 
 }

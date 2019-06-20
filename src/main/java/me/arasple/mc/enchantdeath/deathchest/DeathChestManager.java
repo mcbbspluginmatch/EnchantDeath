@@ -69,6 +69,7 @@ public class DeathChestManager {
     public static DeathChest getDeathChest(Block block) {
         for (DeathChest dc : deathChests) {
             if (dc.isExpired()) {
+                dc.delete();
                 deathChests.remove(dc);
             } else if (dc.getLocation().distance(block.getLocation()) == 0) {
                 return dc;

@@ -5,7 +5,10 @@ import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.*;
+import org.bukkit.event.block.BlockExplodeEvent;
+import org.bukkit.event.block.BlockFromToEvent;
+import org.bukkit.event.block.BlockPistonExtendEvent;
+import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
 /**
@@ -25,13 +28,6 @@ public class ListenerDeathChestProtect implements Listener {
         e.blockList().removeIf(DeathChestManager::isDCBlock);
     }
 
-    @EventHandler
-    public void onBlockDamage(BlockDamageEvent e) {
-        if (DeathChestManager.isDCBlock(e.getBlock())) {
-            e.setCancelled(true);
-        }
-    }
-
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onBlockMove(BlockFromToEvent e) {
         if (DeathChestManager.isDCBlock(e.getToBlock())) {
@@ -39,19 +35,19 @@ public class ListenerDeathChestProtect implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPistonExtend(BlockPistonExtendEvent e) {
         for (Block b : e.getBlocks()) {
-            if (DeathChestManager.isDCBlock(e.getBlock())) {
+            if (DeathChestManager.isDCBlock(b)) {
                 e.setCancelled(true);
             }
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPistonRetract(BlockPistonRetractEvent e) {
         for (Block b : e.getBlocks()) {
-            if (DeathChestManager.isDCBlock(e.getBlock())) {
+            if (DeathChestManager.isDCBlock(b)) {
                 e.setCancelled(true);
             }
         }

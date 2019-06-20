@@ -13,12 +13,12 @@ Plugin:
   enable: '&8[&6ED&8] &3插件现已成功加载并启用, 当前版本: &a{V}&3.'
   commands:
     help:
-      - '&3&l「&8&m                    &3&l」'
+      - '&3&l「&8&m                                        &3&l」'
       - ''
       - '[JSON][{"text":"&8▪ &6/&3EnchantDeath &2Reload &7*重新载入插件相关配置","clickEvent":{"action":"suggest_command","value":"/enchantdeath reload"}}]'
       - '[JSON][{"text":"&8▪ &6/&3EnchantDeath &2Save &7*保存插件数据(死亡箱子)","clickEvent":{"action":"suggest_command","value":"/enchantdeath save"}}]'
       - ''
-      - '&3&l「&8&m                    &3&l」'
+      - '&3&l「&8&m                                        &3&l」'
     reload: '&8[&6ED&8] &3重新载入插件相关配置...'
     save: '&8[&6ED&8] &7手动保存相关数据...'
 
@@ -35,15 +35,14 @@ DeathChest:
   inv-drop: '&8[&6ED&8] &7背包容量不足, 额外的物品已掉落在地上!'
   drop: '&8[&6ED&8] &7取回物品已分散在地上, 请及时拾取.'
   info-preview:
-    - '&3&l「&8&m                    &3&l」'
+    - '&3&l「&8&m                                        &3&l」'
     - ''
-    - '&7▪ &2主人 UUID: &a{OWNER_UUID}'
     - '&7▪ &2主人 名称: &a{OWNER}'
     - ''
     - '&7▫ &3剩余有效时间: &b{TIME_LEFT}s'
     - '&7▫ &3物品数量: &b{ITEMS}'
     - ''
-    - '&3&l「&8&m                    &3&l」'
+    - '&3&l「&8&m                                        &3&l」'
 
 Inventory:
   keep: '&8[&6ED&8] &7你的背包物品被保留.'

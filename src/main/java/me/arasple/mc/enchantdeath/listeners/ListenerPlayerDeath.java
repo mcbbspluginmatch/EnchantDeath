@@ -33,9 +33,8 @@ public class ListenerPlayerDeath implements Listener {
         if (keepInvType.equalsIgnoreCase("KEEP")) {
             e.setKeepInventory(true);
             Msger.sendString(p, "Inventory.keep");
-            // 掉入虚空, 特殊情况
+            // 掉入虚空, 特殊情况不处理
         } else if (p.getLocation().getY() <= 0) {
-
             // 2. 全部清除
         } else if (keepInvType.equalsIgnoreCase("REMOVE")) {
             p.getInventory().clear();
@@ -64,12 +63,13 @@ public class ListenerPlayerDeath implements Listener {
             // 5. 生成死亡箱子
         } else if (keepInvType.equalsIgnoreCase("DEATHCHEST")) {
             if (InvItemsUtils.skipEmpty(p.getInventory().getContents()).length > 0) {
+                e.setKeepInventory(true);
                 long lasts = EDFiles.getSettings().getLong("DeathChest.expire", 600);
-                e.setKeepInventory(false);
                 DeathChest deathChest = new DeathChest(p.getUniqueId(), p.getLocation().getBlock().getLocation(), p.getInventory().getContents(), System.currentTimeMillis(), System.currentTimeMillis() + lasts * 1000);
                 deathChest.loadBlock();
                 DeathChestManager.getDeathChests().add(deathChest);
                 Msger.sendString(p, "Inventory.deathchest");
+                p.getInventory().clear();
             }
         }
 
