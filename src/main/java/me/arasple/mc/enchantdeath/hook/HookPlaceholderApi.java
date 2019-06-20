@@ -7,16 +7,16 @@ import org.bukkit.entity.Player;
 /**
  * @author Arasple
  */
-public class HookPlaceholderAPI {
+public class HookPlaceholderApi {
 
-    private final static boolean isHooked;
+    private final static boolean IS_HOOKED;
 
     static {
-        isHooked = Bukkit.getPluginManager().getPlugin("PlaceholderAPI").isEnabled();
+        IS_HOOKED = Bukkit.getPluginManager().getPlugin("PlaceholderAPI").isEnabled();
     }
 
     public static boolean isHooked() {
-        return isHooked;
+        return IS_HOOKED;
     }
 
     public static String replaceWithPapi(Player p, String str) {

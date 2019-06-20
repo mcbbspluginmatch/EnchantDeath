@@ -7,28 +7,20 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author Arasple
  */
 public class InvItemsUtils {
 
-    public static ItemStack[] removeRandomly(ItemStack[] items, int amount) {
-        items = skipEmpty(items);
-        if (items.length < amount) {
-            return items;
-        } else if (items.length == amount) {
-            return new ItemStack[]{};
-        } else {
-            while (amount > 0) {
-                items[new Random().nextInt(items.length)] = null;
-                amount--;
-            }
-        }
-        return skipEmpty(items);
-    }
-
+    /**
+     * 将一些物品添加到一个容器中, 如果容器满了则掉落在指定坐标
+     *
+     * @param location   坐标
+     * @param inventory  目标容器
+     * @param itemStacks 添加的物品
+     * @return 容器是否已满 / 是否有掉落
+     */
     public static boolean addToInventory(Location location, Inventory inventory, ItemStack[] itemStacks) {
         boolean drop = false;
         for (ItemStack itemStack : itemStacks) {
@@ -42,6 +34,13 @@ public class InvItemsUtils {
         return drop;
     }
 
+    /**
+     * 强制将一些物品添加到容器中, 若容量不足则一个都不操作
+     *
+     * @param inventory  目标容器
+     * @param itemStacks 添加的物品
+     * @return 是否成功
+     */
     public static boolean addToInventoryForce(Inventory inventory, ItemStack[] itemStacks) {
         if (getFreeSlot(inventory) < itemStacks.length) {
             return false;
@@ -51,6 +50,12 @@ public class InvItemsUtils {
         }
     }
 
+    /**
+     * 剔除一个 ItemStack[] 对象中的 null/空气
+     *
+     * @param itemStacks 剔除对象
+     * @return 整理后的对象
+     */
     public static ItemStack[] skipEmpty(ItemStack[] itemStacks) {
         List<ItemStack> items = new ArrayList<>();
         for (ItemStack stack : itemStacks) {
@@ -61,9 +66,15 @@ public class InvItemsUtils {
         return items.toArray(new ItemStack[0]);
     }
 
-    private static int getFreeSlot(Inventory inv) {
+    /**
+     * 取得一个容器中剩余的空槽位
+     *
+     * @param inventory 目标容器
+     * @return 是否已满
+     */
+    private static int getFreeSlot(Inventory inventory) {
         int free = 0;
-        for (ItemStack item : inv.getStorageContents()) {
+        for (ItemStack item : inventory.getStorageContents()) {
             if (item == null) {
                 free++;
             }
@@ -71,8 +82,14 @@ public class InvItemsUtils {
         return free;
     }
 
-    private static boolean isInvFull(Inventory inv) {
-        return getFreeSlot(inv) == 0;
+    /**
+     * 判断一个容器是否槽位已满
+     *
+     * @param inventory 目标容器
+     * @return 是否已满
+     */
+    private static boolean isInvFull(Inventory inventory) {
+        return getFreeSlot(inventory) == 0;
     }
 
 }

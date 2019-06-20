@@ -1,7 +1,7 @@
 package me.arasple.mc.enchantdeath;
 
-import me.arasple.mc.enchantdeath.deathchest.DeathChestManager;
-import me.arasple.mc.enchantdeath.deathmessage.DeathMessageManager;
+import me.arasple.mc.enchantdeath.modules.deathchest.DeathChestManager;
+import me.arasple.mc.enchantdeath.modules.deathmessage.DeathMessageManager;
 import me.arasple.mc.enchantdeath.utils.Msger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,21 +10,23 @@ import org.bukkit.command.CommandSender;
 /**
  * @author Arasple
  */
-public class EDCommands implements CommandExecutor {
+public class EdCommands implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length == 1) {
             switch (args[0].toUpperCase()) {
+                // 重载命令
                 case "RELOAD":
-                    EDFiles.loadConfigurations();
+                    EdFiles.loadConfigurations();
                     DeathMessageManager.loadMessages();
                     Msger.sendString(sender, "Plugin.commands.reload");
                     break;
+                // 保存命令
                 case "SAVE":
                     DeathChestManager.saveDeathChests();
-                    EDFiles.saveDataToFile();
+                    EdFiles.saveDataToFile();
                     Msger.sendString(sender, "Plugin.commands.save");
                     break;
                 default:
@@ -37,8 +39,13 @@ public class EDCommands implements CommandExecutor {
         return false;
     }
 
-    private void displayHelp(CommandSender sender) {
-        Msger.sendStrings(sender, "Plugin.commands.help");
+    /**
+     * 显示命令帮助
+     *
+     * @param receiver 接收者
+     */
+    private void displayHelp(CommandSender receiver) {
+        Msger.sendStrings(receiver, "Plugin.commands.help");
     }
 
 }

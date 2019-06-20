@@ -1,6 +1,6 @@
 package me.arasple.mc.enchantdeath.listeners;
 
-import me.arasple.mc.enchantdeath.deathchest.DeathChestManager;
+import me.arasple.mc.enchantdeath.modules.deathchest.DeathChestManager;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -20,17 +20,17 @@ public class ListenerDeathChestProtect implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onExplodeBlock(BlockExplodeEvent e) {
-        e.blockList().removeIf(DeathChestManager::isDCBlock);
+        e.blockList().removeIf(DeathChestManager::isDcBlock);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onExplodeEntity(EntityExplodeEvent e) {
-        e.blockList().removeIf(DeathChestManager::isDCBlock);
+        e.blockList().removeIf(DeathChestManager::isDcBlock);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onBlockMove(BlockFromToEvent e) {
-        if (DeathChestManager.isDCBlock(e.getToBlock())) {
+        if (DeathChestManager.isDcBlock(e.getToBlock())) {
             e.setCancelled(true);
         }
     }
@@ -38,7 +38,7 @@ public class ListenerDeathChestProtect implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPistonExtend(BlockPistonExtendEvent e) {
         for (Block b : e.getBlocks()) {
-            if (DeathChestManager.isDCBlock(b)) {
+            if (DeathChestManager.isDcBlock(b)) {
                 e.setCancelled(true);
             }
         }
@@ -47,7 +47,7 @@ public class ListenerDeathChestProtect implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPistonRetract(BlockPistonRetractEvent e) {
         for (Block b : e.getBlocks()) {
-            if (DeathChestManager.isDCBlock(b)) {
+            if (DeathChestManager.isDcBlock(b)) {
                 e.setCancelled(true);
             }
         }

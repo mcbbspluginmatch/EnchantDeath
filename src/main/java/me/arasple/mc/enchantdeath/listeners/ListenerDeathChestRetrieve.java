@@ -1,9 +1,9 @@
 package me.arasple.mc.enchantdeath.listeners;
 
-import me.arasple.mc.enchantdeath.EDFiles;
+import me.arasple.mc.enchantdeath.EdFiles;
 import me.arasple.mc.enchantdeath.EnchantDeath;
-import me.arasple.mc.enchantdeath.deathchest.DeathChest;
-import me.arasple.mc.enchantdeath.deathchest.DeathChestManager;
+import me.arasple.mc.enchantdeath.modules.deathchest.DeathChest;
+import me.arasple.mc.enchantdeath.modules.deathchest.DeathChestManager;
 import me.arasple.mc.enchantdeath.utils.Msger;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;
@@ -49,7 +49,7 @@ public class ListenerDeathChestRetrieve implements Listener {
                 return;
             }
             // 如果取死亡盒的方式设置的是 Touch 交互, 则执行取箱子相关操作
-            if (EDFiles.getSettings().getString("DeathChest.retrieve").equalsIgnoreCase("TOUCH")) {
+            if ("TOUCH".equalsIgnoreCase(EdFiles.getSettings().getString("DeathChest.retrieve"))) {
                 // 匹配到持有者
                 if (dc.getOwner().equals(p.getUniqueId())) {
                     DeathChestManager.retrieve(dc, p);
@@ -70,19 +70,19 @@ public class ListenerDeathChestRetrieve implements Listener {
         if (e.getBlock() != null && !e.getBlock().isEmpty() && dc != null) {
             // 匹配到持有者
             if (p.getUniqueId().equals(dc.getOwner())) {
-                String retrieve = EDFiles.getSettings().getString("DeathChest.retrieve");
+                String retrieve = EdFiles.getSettings().getString("DeathChest.retrieve");
                 ItemStack tool = p.getPlayer().getInventory().getItemInMainHand();
 
                 // [BREAK] 索取方式
-                if (retrieve.equalsIgnoreCase("BREAK")) {
+                if ("BREAK".equalsIgnoreCase(retrieve)) {
                     DeathChestManager.retrieve(dc, p);
                     e.setCancelled(true);
                 } else if (tool == null || tool.getType() == Material.AIR) {
                     Msger.sendString(p, "DeathChest.not-special-material");
                     e.setCancelled(true);
                     // 自定义物品索取方式
-                } else if (retrieve.equalsIgnoreCase("SPECIAL-MATERIAL")) {
-                    for (String toolType : EDFiles.getSettings().getStringList("DeathChest.special-materials")) {
+                } else if ("SPECIAL-MATERIAL".equalsIgnoreCase(retrieve)) {
+                    for (String toolType : EdFiles.getSettings().getStringList("DeathChest.special-materials")) {
                         if (tool.getType().name().equalsIgnoreCase(toolType)) {
                             if (!DeathChestManager.retrieve(dc, p)) {
                                 e.setCancelled(true);
@@ -93,13 +93,13 @@ public class ListenerDeathChestRetrieve implements Listener {
                     e.setCancelled(true);
                     Msger.sendString(p, "DeathChest.not-special-material");
                     // 限定 Lore 物品索取方式
-                } else if (retrieve.equalsIgnoreCase("SPECIAL-LORE")) {
+                } else if ("SPECIAL-LORE".equalsIgnoreCase(retrieve)) {
                     if (tool.getItemMeta().getLore() == null || tool.getItemMeta().getLore().size() == 0) {
                         Msger.sendString(p, "DeathChest.no-special-lore");
                         e.setCancelled(true);
                         return;
                     }
-                    for (String l : EDFiles.getSettings().getStringList("DeathChest.special-lores")) {
+                    for (String l : EdFiles.getSettings().getStringList("DeathChest.special-lores")) {
                         for (String lore : tool.getItemMeta().getLore()) {
                             if (lore.equalsIgnoreCase(l)) {
                                 DeathChestManager.retrieve(dc, p);
