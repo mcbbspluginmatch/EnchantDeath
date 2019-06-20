@@ -1,0 +1,6 @@
+DeathChests:
+  START_TIME:
+    owner: UUID
+    expire-time:
+    location:
+    items:

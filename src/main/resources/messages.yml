@@ -1,0 +1,55 @@
+##################################################
+# EnchantDeath Messages
+#
+# 插件所有消息均支持 JSON 和 PlaceholderAPI,
+# 可以高度自定义
+#
+# 使用 JSON 消息时需要在内容最前面加上 "[JSON]";
+#
+##################################################
+
+Plugin:
+  hook-papi: '&8[&6ED&8] &3成功挂钩插件 &aPlaceholderAPI&3.'
+  enable: '&8[&6ED&8] &3插件现已成功加载并启用, 当前版本: &a{V}&3.'
+  commands:
+    help:
+      - '&3&l「&8&m                    &3&l」'
+      - ''
+      - '[JSON][{"text":"&8▪ &6/&3EnchantDeath &2Reload &7*重新载入插件相关配置","clickEvent":{"action":"suggest_command","value":"/enchantdeath reload"}}]'
+      - '[JSON][{"text":"&8▪ &6/&3EnchantDeath &2Save &7*保存插件数据(死亡箱子)","clickEvent":{"action":"suggest_command","value":"/enchantdeath save"}}]'
+      - ''
+      - '&3&l「&8&m                    &3&l」'
+    reload: '&8[&6ED&8] &3重新载入插件相关配置...'
+    save: '&8[&6ED&8] &7手动保存相关数据...'
+
+DeathMessages:
+  load: '&8[&6ED&8] &3总计加载了 &a{V} &3条自定义死亡消息.'
+  print-unset-entity: '&8[&6ED&8] &7实体: &3{E} &7还未被配置.'
+
+DeathChest:
+  load: '&8[&6ED&8] &3成功从数据文件中读取 &a{V} &3个有效的死亡盒.'
+  not-yours: '&8[&6ED&8] &7你仅能取回自己的死亡盒!'
+  not-special-material: '&8[&6ED&8] &7你必须用指定类型的工具才能取回!'
+  no-special-lore: '&8[&6ED&8] &7你必须用特定的道具才能取回!'
+  no-enough-space: '&8[&6ED&8] &7请腾空你的背包, 容量不足!'
+  inv-drop: '&8[&6ED&8] &7背包容量不足, 额外的物品已掉落在地上!'
+  drop: '&8[&6ED&8] &7取回物品已分散在地上, 请及时拾取.'
+  info-preview:
+    - '&3&l「&8&m                    &3&l」'
+    - ''
+    - '&7▪ &2主人 UUID: &a{OWNER_UUID}'
+    - '&7▪ &2主人 名称: &a{OWNER}'
+    - ''
+    - '&7▫ &3剩余有效时间: &b{TIME_LEFT}s'
+    - '&7▫ &3物品数量: &b{ITEMS}'
+    - ''
+    - '&3&l「&8&m                    &3&l」'
+
+Inventory:
+  keep: '&8[&6ED&8] &7你的背包物品被保留.'
+  remove: '&8[&6ED&8] &7你的背包物品被全部清除.'
+  deathchest: '[JSON]
+  ["",{"text":"&8[&6ED&8] &7死亡盒已生成, "},{"text":"&6&n点击","clickEvent":{"action":"run_command","value":"/back"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"&8▫ &7坐标: &6%player_x%/%player_y%/%player_z%\n\n&2» &a点击执行 /Back 返回"}]}}}]
+  '
+  drop-all: '&8[&6ED&8] &7你的背包物品已经全部 &&6n掉落&7, 请及时拾回.'
+  drop-random: '&8[&6ED&8] &d&k????? &7你.... 随 .. 机 &d&k?? &7丢失了 &5{AMOUNT} &7个物品...!'
