@@ -1,6 +1,7 @@
 package me.arasple.mc.enchantdeath.listeners;
 
 import me.arasple.mc.enchantdeath.EDFiles;
+import me.arasple.mc.enchantdeath.EnchantDeath;
 import me.arasple.mc.enchantdeath.deathchest.DeathChest;
 import me.arasple.mc.enchantdeath.deathchest.DeathChestManager;
 import me.arasple.mc.enchantdeath.utils.Msger;
@@ -27,7 +28,11 @@ public class ListenerDeathChestRetrieve implements Listener {
     public void onTouch(PlayerInteractEvent e) {
         Player p = e.getPlayer();
 
-        if (e.getHand() != EquipmentSlot.HAND || e.getClickedBlock() == null || e.getClickedBlock().isEmpty()) {
+        if (!EnchantDeath.getServerVersion().startsWith("v1_8") && e.getHand() != EquipmentSlot.HAND) {
+            return;
+        }
+
+        if (e.getClickedBlock() == null || e.getClickedBlock().isEmpty()) {
             return;
         }
 

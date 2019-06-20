@@ -97,5 +97,5 @@ public class DeathMessageManager {
     public static String getCount() {
         return String.valueOf(unknow.size() + byCauses.values().size() + byEntity.values().size());
     }
-    
+
 }

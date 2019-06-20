@@ -48,8 +48,6 @@ DeathChest:
 Inventory:
   keep: '&8[&6ED&8] &7你的背包物品被保留.'
   remove: '&8[&6ED&8] &7你的背包物品被全部清除.'
-  deathchest: '[JSON]
-  ["",{"text":"&8[&6ED&8] &7死亡盒已生成, "},{"text":"&6&n点击","clickEvent":{"action":"run_command","value":"/back"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"&8▫ &7坐标: &6%player_x%/%player_y%/%player_z%\n\n&2» &a点击执行 /Back 返回"}]}}}]
-  '
+  deathchest: '[JSON][{"text":"&8[&6ED&8] &7死亡盒已生成, "},{"text":"&6&n查看坐标","clickEvent":{"action":"run_command","value":"/back"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"&8▫ &7坐标: &6%player_x%/%player_y%/%player_z%\n\n&2» &a点击执行 /Back 返回"}]}}}]'
   drop-all: '&8[&6ED&8] &7你的背包物品已经全部 &&6n掉落&7, 请及时拾回.'
   drop-random: '&8[&6ED&8] &d&k????? &7你.... 随 .. 机 &d&k?? &7丢失了 &5{AMOUNT} &7个物品...!'

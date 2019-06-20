@@ -87,7 +87,8 @@ public class DeathChest {
         }
         block.setType(getSkullMaterial());
         ((Skull) block.getState()).setSkullType(SkullType.PLAYER);
-        ((Skull) block.getState()).setOwningPlayer(Bukkit.getOfflinePlayer(getOwner()));
+        // 使用过期的方法是为了兼容1.8
+        ((Skull) block.getState()).setOwner(Bukkit.getOfflinePlayer(getOwner()).getName());
         block.getState().update();
     }
 

@@ -32,12 +32,25 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class EnchantDeath extends JavaPlugin {
 
     private static EnchantDeath instance;
+    private static String serverVersion;
 
     /*
     Getters
      */
     public static EnchantDeath getInstance() {
         return instance;
+    }
+
+    public static String getServerVersion() {
+        return serverVersion;
+    }
+
+    @Override
+    public void onLoad() {
+        checkServerVersion();
+    }
+
+    private void checkServerVersion() {
     }
 
     @Override
@@ -54,6 +67,8 @@ public final class EnchantDeath extends JavaPlugin {
     private void register() {
         // Instance
         instance = this;
+        // Server Version
+        serverVersion = getServer().getClass().getPackage().getName().split("\\.")[3];
         // Files
         EDFiles.loadFiles();
         EDFiles.loadConfigurations();
