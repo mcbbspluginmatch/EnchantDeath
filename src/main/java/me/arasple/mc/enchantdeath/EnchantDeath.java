@@ -13,11 +13,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * 附魔死亡 EnchantDeath
- * <p>
+ *
  * hmmm
- * <p>
+ *
  * 高度自定义 / 完善的系统 / 强大的拓展性 —— 死亡管理系统
- * <p>
+ *
  * * 无依赖, 轻量级
  * * 所有消息均支持 JSON、PlaceholderAPI
  * * 每个世界可独立设置
