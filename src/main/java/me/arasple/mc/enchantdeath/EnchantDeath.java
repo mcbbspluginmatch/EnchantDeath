@@ -1,5 +1,6 @@
 package me.arasple.mc.enchantdeath;
 
+import me.arasple.mc.enchantdeath.bstats.Metrics;
 import me.arasple.mc.enchantdeath.deathchest.DeathChestManager;
 import me.arasple.mc.enchantdeath.deathmessage.DeathMessageManager;
 import me.arasple.mc.enchantdeath.hook.HookPlaceholderAPI;
@@ -61,6 +62,8 @@ public final class EnchantDeath extends JavaPlugin {
         instance = this;
         // Server Version
         serverVersion = getServer().getClass().getPackage().getName().split("\\.")[3];
+        // Metrics (bStats.org)
+        new Metrics(this);
         // Files
         EDFiles.loadFiles();
         EDFiles.loadConfigurations();
