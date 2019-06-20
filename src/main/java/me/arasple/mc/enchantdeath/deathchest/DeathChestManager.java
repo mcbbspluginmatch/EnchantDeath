@@ -70,7 +70,7 @@ public class DeathChestManager {
         for (DeathChest dc : deathChests) {
             if (dc.isExpired()) {
                 deathChests.remove(dc);
-            } else if (dc.getLocation().distance(block.getLocation())==0) {
+            } else if (dc.getLocation().distance(block.getLocation()) == 0) {
                 return dc;
             }
         }
@@ -92,7 +92,7 @@ public class DeathChestManager {
                 boolean enough = InvItemsUtils.addToInventoryForce(p.getInventory(), deathChest.getItems());
                 if (!enough) {
                     Msger.sendString(p, "DeathChest.no-enough-space");
-                }else {
+                } else {
                     success = !success;
                 }
                 break;
@@ -119,12 +119,12 @@ public class DeathChestManager {
     }
 
     public static void showInfo(Player p, DeathChest dc) {
-        for (String s:EDFiles.getMessages().getStringList("DeathChest.info-preview")){
+        for (String s : EDFiles.getMessages().getStringList("DeathChest.info-preview")) {
             s = s
                     .replace("{OWNER_UUID}", dc.getOwner().toString())
                     .replace("{OWNER}", Bukkit.getOfflinePlayer(dc.getOwner()).getName())
                     .replace("{ITEMS}", String.valueOf(dc.getItems().length))
-                    .replace("{TIME_LEFT}", String.valueOf((dc.getExpireTime()-System.currentTimeMillis())/1000)
+                    .replace("{TIME_LEFT}", String.valueOf((dc.getExpireTime() - System.currentTimeMillis()) / 1000)
                     );
             Msger.sendTo(p, s);
         }

@@ -14,6 +14,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * 附魔死亡 EnchantDeath
  * <p>
+ * hmmm
+ * <p>
  * 高度自定义 / 完善的系统 / 强大的拓展性 —— 死亡管理系统
  * <p>
  * * 无依赖, 轻量级
@@ -25,7 +27,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * * 事件支持自定义后台拓展命令, 扣钱、加药水效果、增音效 一气呵成
  * * 死亡统计系统, 死亡排行榜. 提供 PlaceholderAPI变量
  *
- * @author Arasple
+ * @author Arasple (垃圾代码, 大佬勿喷)
  */
 public final class EnchantDeath extends JavaPlugin {
 

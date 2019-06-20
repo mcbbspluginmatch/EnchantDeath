@@ -31,7 +31,7 @@ public class ListenerDeathChestRetrieve implements Listener {
             return;
         }
 
-        if (e.getClickedBlock().getState() instanceof Chest){
+        if (e.getClickedBlock().getState() instanceof Chest) {
             e.setCancelled(true);
         }
 
@@ -75,7 +75,7 @@ public class ListenerDeathChestRetrieve implements Listener {
                 } else if (tool == null || tool.getType() == Material.AIR) {
                     Msger.sendString(p, "DeathChest.not-special-material");
                     e.setCancelled(true);
-                // 自定义物品索取方式
+                    // 自定义物品索取方式
                 } else if (retrieve.equalsIgnoreCase("SPECIAL-MATERIAL")) {
                     for (String toolType : EDFiles.getSettings().getStringList("DeathChest.special-materials")) {
                         if (tool.getType().name().equalsIgnoreCase(toolType)) {
@@ -87,7 +87,7 @@ public class ListenerDeathChestRetrieve implements Listener {
                     }
                     e.setCancelled(true);
                     Msger.sendString(p, "DeathChest.not-special-material");
-                // 限定 Lore 物品索取方式
+                    // 限定 Lore 物品索取方式
                 } else if (retrieve.equalsIgnoreCase("SPECIAL-LORE")) {
                     if (tool.getItemMeta().getLore() == null || tool.getItemMeta().getLore().size() == 0) {
                         Msger.sendString(p, "DeathChest.no-special-lore");

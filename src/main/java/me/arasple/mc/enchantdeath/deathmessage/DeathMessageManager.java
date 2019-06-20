@@ -86,9 +86,6 @@ public class DeathMessageManager {
         }
     }
 
-    /*
-    PRIVATE METHODS
-     */
     private static String getRandomFromListString(List<String> strings) {
         return strings.get(new Random().nextInt(strings.size()));
     }
@@ -100,4 +97,5 @@ public class DeathMessageManager {
     public static String getCount() {
         return String.valueOf(unknow.size() + byCauses.values().size() + byEntity.values().size());
     }
+    
 }

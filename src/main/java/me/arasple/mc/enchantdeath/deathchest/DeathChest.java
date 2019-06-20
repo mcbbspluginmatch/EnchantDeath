@@ -82,7 +82,7 @@ public class DeathChest {
                 block.setType(Material.valueOf(type));
                 return;
             } else {
-                Msger.log("&8[&6ED&8] &7死亡盒的材质: &6" + type + " &7无效. 将默认使用玩家头颅, 请检查配置!");
+                Msger.log("&8[&6ED&8] &7死亡盒的材料: &6" + type + " &7无效. 将默认使用玩家头颅, 请检查配置!");
             }
         }
         block.setType(getSkullMaterial());
@@ -95,7 +95,7 @@ public class DeathChest {
         Material skull;
         try {
             skull = Material.valueOf("PLAYER_HEAD");
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             skull = Material.valueOf("SKULL");
         }
         return skull;

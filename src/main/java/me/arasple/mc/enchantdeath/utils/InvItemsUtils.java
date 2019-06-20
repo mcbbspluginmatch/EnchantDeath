@@ -21,7 +21,7 @@ public class InvItemsUtils {
         } else if (items.length == amount) {
             return new ItemStack[]{};
         } else {
-            while (amount>0){
+            while (amount > 0) {
                 items[new Random().nextInt(items.length)] = null;
                 amount--;
             }
@@ -51,10 +51,10 @@ public class InvItemsUtils {
         }
     }
 
-    public static ItemStack[] skipEmpty(ItemStack[] itemStacks){
+    public static ItemStack[] skipEmpty(ItemStack[] itemStacks) {
         List<ItemStack> items = new ArrayList<>();
         for (ItemStack stack : itemStacks) {
-            if (stack!=null && stack.getType()!= Material.AIR){
+            if (stack != null && stack.getType() != Material.AIR) {
                 items.add(stack);
             }
         }

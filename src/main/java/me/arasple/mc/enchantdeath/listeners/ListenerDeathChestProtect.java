@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 
 /**
  * @author Arasple
- *
+ * <p>
  * 监听一些额外的方块事件以防止死亡箱子被破坏.
  */
 public class ListenerDeathChestProtect implements Listener {

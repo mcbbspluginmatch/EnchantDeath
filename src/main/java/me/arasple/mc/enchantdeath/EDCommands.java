@@ -15,8 +15,8 @@ public class EDCommands implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (args.length == 1){
-            switch (args[0].toUpperCase()){
+        if (args.length == 1) {
+            switch (args[0].toUpperCase()) {
                 case "RELOAD":
                     EDFiles.loadConfigurations();
                     DeathMessageManager.loadMessages();

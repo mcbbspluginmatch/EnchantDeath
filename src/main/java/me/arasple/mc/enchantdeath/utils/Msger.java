@@ -33,7 +33,7 @@ public class Msger {
             message = color(target instanceof Player ? HookPlaceholderAPI.replaceWithPapi((Player) target, message) : message);
             if (message.startsWith("[JSON]")) {
                 target.spigot().sendMessage(ComponentSerializer.parse(message.substring(6)));
-            }else {
+            } else {
                 target.sendMessage(message);
             }
         }
@@ -45,7 +45,7 @@ public class Msger {
     }
 
     public static void sendStrings(CommandSender target, String path) {
-        EDFiles.getMessages().getStringList(path).forEach(str-> sendTo(target, str));
+        EDFiles.getMessages().getStringList(path).forEach(str -> sendTo(target, str));
     }
 
     private static String color(String str) {

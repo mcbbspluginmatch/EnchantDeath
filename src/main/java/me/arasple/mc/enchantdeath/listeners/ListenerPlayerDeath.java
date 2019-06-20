@@ -33,10 +33,10 @@ public class ListenerPlayerDeath implements Listener {
         if (keepInvType.equalsIgnoreCase("KEEP")) {
             e.setKeepInventory(true);
             Msger.sendString(p, "Inventory.keep");
-        // 掉入虚空, 特殊情况
-        }else if (p.getLocation().getY()<=0){
+            // 掉入虚空, 特殊情况
+        } else if (p.getLocation().getY() <= 0) {
 
-        // 2. 全部清除
+            // 2. 全部清除
         } else if (keepInvType.equalsIgnoreCase("REMOVE")) {
             p.getInventory().clear();
             e.setKeepInventory(false);
