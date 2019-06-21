@@ -2,7 +2,7 @@
 
 全方位高度自定义 Minecraft 死亡事件 
 
-***功能 Features***
+
 * 支持 Spigot 1.12/1.13/1.14 (1.8+的低版本未测试)
 * 无依赖, 轻量级
 * 所有消息均支持 JSON、PlaceholderAPI
