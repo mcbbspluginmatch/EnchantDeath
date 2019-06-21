@@ -17,7 +17,7 @@ CommandsAfterRespawn:
   - 'effect {P} minecraft:weakness 10' # 给予虚弱效果 10s
 
   #- 'effect give {P} minecraft:blindness 10' # 这两个命令和上面效果一样
-  #- 'effect give {P} minecraft:weakness 10' # 用于 1.13+
+  #- 'effect give {P} minecraft:weakness 10' # 用于 1.13, 1.14+
 
   - 'playsound minecraft:item.shield.block block {P} %player_x% %player_y% %player_z%' # 播放音效
   - 'title {P} title {"text": "&3&l重生成功, &2&l{P}!"}' # 发送 Title
