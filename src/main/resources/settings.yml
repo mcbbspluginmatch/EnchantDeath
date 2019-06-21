@@ -13,16 +13,20 @@ CommandsAfterDeath:
   - 'eco take {P} 100' # 扣除100金币
 # 重生之后, 后台执行的命令
 CommandsAfterRespawn:
-  - 'effect %player_name% minecraft:blindness 10' # 给予致盲效果 10s
-  - 'effect %player_name% minecraft:weakness 10' # 给予虚弱效果 10s
+  - 'effect {P} minecraft:blindness 10' # 给予致盲效果 10s
+  - 'effect {P} minecraft:weakness 10' # 给予虚弱效果 10s
+
+  #- 'effect give {P} minecraft:blindness 10' # 这两个命令和上面效果一样
+  #- 'effect give {P} minecraft:weakness 10' # 用于 1.13+
+
   - 'playsound minecraft:item.shield.block block {P} %player_x% %player_y% %player_z%' # 播放音效
-  - 'title Arasple title {"text": "&3&l重生成功, &2&l{P}!"}' # 发送 Title
-  - 'title Arasple subtitle {"text": "&7&l珍爱生命, 远离死亡."}' # 发送 SubTitle
+  - 'title {P} title {"text": "&3&l重生成功, &2&l{P}!"}' # 发送 Title
+  - 'title {P} subtitle {"text": "&7&l珍爱生命, 远离死亡."}' # 发送 SubTitle
 # 取回死亡箱子后，后台执行的命令
 CommandsAfterRetrieveDeathChest:
   - 'playsound minecraft:item.bottle.fill block {P} %player_x% %player_y% %player_z%'
-  - 'title Arasple title {"text": "&a&l索取成功"}' # 发送 Title
-  - 'title Arasple subtitle {"text": "&7&l珍爱生命, 远离死亡."}' # 发送 SubTitle
+  - 'title {P} title {"text": "&a&l索取成功"}' # 发送 Title
+  - 'title {P} subtitle {"text": "&7&l珍爱生命, 远离死亡."}' # 发送 SubTitle
 
 ##################################################
 #
