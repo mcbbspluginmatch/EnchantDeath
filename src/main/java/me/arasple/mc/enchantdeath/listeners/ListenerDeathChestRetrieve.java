@@ -36,13 +36,12 @@ public class ListenerDeathChestRetrieve implements Listener {
             return;
         }
 
-        if (e.getClickedBlock().getState() instanceof Chest) {
-            e.setCancelled(true);
-        }
-
         DeathChest dc = DeathChestManager.getDeathChest(e.getClickedBlock());
 
         if (dc != null) {
+            if (e.getClickedBlock().getState() instanceof Chest) {
+                e.setCancelled(true);
+            }
             // 预览查看死亡箱信息的操作
             if (p.isSneaking() && e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                 DeathChestManager.showInfo(p, dc);
@@ -67,7 +66,7 @@ public class ListenerDeathChestRetrieve implements Listener {
         Player p = e.getPlayer();
         DeathChest dc = DeathChestManager.getDeathChest(e.getBlock());
 
-        if (e.getBlock() != null && !e.getBlock().isEmpty() && dc != null) {
+        if (!e.getBlock().isEmpty() && dc != null) {
             // 匹配到持有者
             if (p.getUniqueId().equals(dc.getOwner())) {
                 String retrieve = EdFiles.getSettings().getString("DeathChest.retrieve");
@@ -77,7 +76,7 @@ public class ListenerDeathChestRetrieve implements Listener {
                 if ("BREAK".equalsIgnoreCase(retrieve)) {
                     DeathChestManager.retrieve(dc, p);
                     e.setCancelled(true);
-                } else if (tool == null || tool.getType() == Material.AIR) {
+                } else if (tool.getType() == Material.AIR) {
                     Msger.sendString(p, "DeathChest.not-special-material");
                     e.setCancelled(true);
                     // 自定义物品索取方式
