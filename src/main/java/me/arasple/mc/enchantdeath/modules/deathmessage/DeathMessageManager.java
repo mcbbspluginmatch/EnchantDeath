@@ -57,7 +57,7 @@ public class DeathMessageManager {
      */
     public static String getByEntity(EntityType entityType) {
         if (print_unset_entity && byEntity.get(entityType.name()) == null) {
-            Msger.sendTo(Bukkit.getConsoleSender(), EdFiles.getMessages().getString("DeathMessage.print-unset-entity")
+            Msger.sendTo(Bukkit.getConsoleSender(), EdFiles.getMessages().getString("DeathMessages.print-unset-entity")
                     .replace("{E}", entityType.name()));
         }
 

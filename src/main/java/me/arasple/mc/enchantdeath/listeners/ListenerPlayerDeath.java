@@ -37,7 +37,9 @@ public class ListenerPlayerDeath implements Listener {
         Msger.consoleExecute(p, EdFiles.getSettings().getStringList("CommandsAfterDeath"));
 
         // 死亡后对物品的处理
-        DeathInvManager.process(p, keepInvType);
+        if (!(EdFiles.getSettings().getBoolean("General.keep-inv-permission.enable", false) && p.hasPermission(EdFiles.getSettings().getString("General.keep-inv-permission.node", "echantdeath.keepinv")))){
+            DeathInvManager.process(p, keepInvType);
+        }
         e.setKeepInventory(true);
         e.setDeathMessage(null);
 

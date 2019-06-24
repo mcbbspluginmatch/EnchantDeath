@@ -142,3 +142,8 @@ DeathMessages:
       - '&8[&c☠&8] &6{P} &7打不过僵尸, 也跑不过僵尸'
     PIG_ZOMBIE:
       - '&8[&c☠&8] &6{P} &7被僵尸猪人吃了, 坐标: %player_x%/%player_y%/%player_z%'
+
+General:
+  keep-inv-permission:
+    enable: true
+    node: echantdeath.keepinv
