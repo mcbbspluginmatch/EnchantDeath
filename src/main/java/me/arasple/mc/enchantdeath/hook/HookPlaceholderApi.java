@@ -12,7 +12,7 @@ public class HookPlaceholderApi {
     private final static boolean IS_HOOKED;
 
     static {
-        IS_HOOKED = Bukkit.getPluginManager().getPlugin("PlaceholderAPI").isEnabled();
+        IS_HOOKED = Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI");
     }
 
     public static boolean isHooked() {

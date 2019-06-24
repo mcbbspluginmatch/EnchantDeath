@@ -147,3 +147,9 @@ General:
   keep-inv-permission:
     enable: true
     node: echantdeath.keepinv
+  # 玩家重生后给予死亡时的饥饿值
+  # 防止自杀刷饥饿
+  keep-foodlevel: true
+  # 玩家重生后保留死亡时的药水效果
+  keep-potion-effects: false
+

@@ -4,6 +4,7 @@ import me.arasple.mc.enchantdeath.EdFiles;
 import me.arasple.mc.enchantdeath.hook.HookPlaceholderApi;
 import me.arasple.mc.enchantdeath.modules.deathinvkeep.DeathInvManager;
 import me.arasple.mc.enchantdeath.modules.deathmessage.DeathMessageManager;
+import me.arasple.mc.enchantdeath.utils.DataHandler;
 import me.arasple.mc.enchantdeath.utils.Msger;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -50,7 +51,7 @@ public class ListenerPlayerDeath implements Listener {
         }
 
         // 死亡后对消息处理
-        if (p.getLastDamageCause() != null && p.getLastDamageCause().getCause() != null) {
+        if (p.getLastDamageCause() != null) {
             EntityDamageEvent.DamageCause cause = p.getLastDamageCause().getCause();
             String message;
             if (p.getLastDamageCause() instanceof EntityDamageByEntityEvent) {
@@ -65,6 +66,10 @@ public class ListenerPlayerDeath implements Listener {
                     p
             );
         }
+
+        // 传递饥饿值数据, 药水数据
+        DataHandler.getFoodLevel().put(p.getUniqueId(), p.getFoodLevel());
+        DataHandler.getPotionEffects().put(p.getUniqueId(), p.getActivePotionEffects());
     }
 
 }

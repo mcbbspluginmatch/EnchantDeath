@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="EnchantDeath">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="EnchantDeath.jar">
+      <element id="module-output" name="EnchantDeath" />
+    </root>
+  </artifact>
+</component>
