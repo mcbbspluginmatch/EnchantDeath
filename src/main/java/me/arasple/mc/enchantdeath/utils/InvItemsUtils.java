@@ -2,10 +2,12 @@ package me.arasple.mc.enchantdeath.utils;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -21,14 +23,14 @@ public class InvItemsUtils {
      * @param itemStacks 添加的物品
      * @return 容器是否已满 / 是否有掉落
      */
-    public static boolean addToInventory(Location location, Inventory inventory, ItemStack[] itemStacks) {
+    public static boolean addToInventory(Location location, PlayerInventory inventory, ItemStack[] itemStacks) {
         boolean drop = false;
         if (location == null || location.getWorld() == null){
             return false;
         }
         for (ItemStack item : itemStacks) {
             if (!isInvFull(inventory)) {
-                inventory.addItem(item);
+                addItemToInv(inventory, item);
             } else {
                 location.getWorld().dropItemNaturally(location, item);
                 drop = !drop;
@@ -44,13 +46,33 @@ public class InvItemsUtils {
      * @param itemStacks 添加的物品
      * @return 是否成功
      */
-    public static boolean addToInventoryForce(Inventory inventory, ItemStack[] itemStacks) {
+    public static boolean addToInventoryForce(PlayerInventory inventory, ItemStack[] itemStacks) {
         if (getFreeSlot(inventory) < itemStacks.length) {
             return false;
         } else {
-            inventory.addItem(itemStacks);
+            addItemToInv(inventory, itemStacks);
             return true;
         }
+    }
+
+    private static void addItemToInv(PlayerInventory inventory, ItemStack... itemStacks){
+        List<ItemStack> armors = new ArrayList<>(inventory.addItem(itemStacks).values());
+        armors.forEach(itemStack -> {
+            String type = itemStack.getType().name().toLowerCase();
+            if (type.endsWith("helmet")){
+                inventory.setHelmet(itemStack);
+            }else if (type.endsWith("chestplate")){
+                inventory.setChestplate(itemStack);
+            }else if (type.endsWith("leggings")){
+                inventory.setLeggings(itemStack);
+            }else if (type.endsWith("boots")){
+                inventory.setBoots(itemStack);
+            }else if (inventory.getItemInMainHand().getType() == Material.AIR){
+                inventory.setItemInMainHand(itemStack);
+            }else if (inventory.getItemInOffHand().getType() == Material.AIR) {
+                inventory.setItemInOffHand(itemStack);
+            }
+        });
     }
 
     /**
@@ -75,7 +97,7 @@ public class InvItemsUtils {
      * @param inventory 目标容器
      * @return 是否已满
      */
-    private static int getFreeSlot(Inventory inventory) {
+    private static int getFreeSlot(PlayerInventory inventory) {
         int free = 0;
         for (ItemStack item : inventory.getContents()) {
             if (item == null) {
@@ -91,7 +113,7 @@ public class InvItemsUtils {
      * @param inventory 目标容器
      * @return 是否已满
      */
-    private static boolean isInvFull(Inventory inventory) {
+    private static boolean isInvFull(PlayerInventory inventory) {
         return getFreeSlot(inventory) == 0;
     }
 
