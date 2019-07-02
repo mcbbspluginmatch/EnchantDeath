@@ -23,11 +23,14 @@ public class InvItemsUtils {
      */
     public static boolean addToInventory(Location location, Inventory inventory, ItemStack[] itemStacks) {
         boolean drop = false;
-        for (ItemStack itemStack : itemStacks) {
+        if (location == null || location.getWorld() == null){
+            return false;
+        }
+        for (ItemStack item : itemStacks) {
             if (!isInvFull(inventory)) {
-                inventory.addItem(itemStacks);
+                inventory.addItem(item);
             } else {
-                location.getWorld().dropItemNaturally(location, itemStack);
+                location.getWorld().dropItemNaturally(location, item);
                 drop = !drop;
             }
         }
@@ -74,7 +77,7 @@ public class InvItemsUtils {
      */
     private static int getFreeSlot(Inventory inventory) {
         int free = 0;
-        for (ItemStack item : inventory.getStorageContents()) {
+        for (ItemStack item : inventory.getContents()) {
             if (item == null) {
                 free++;
             }

@@ -56,7 +56,7 @@ public class Msger {
      */
     private static void consoleExecute(Player p, String command) {
         command = HookPlaceholderApi.replaceWithPapi(p, command.replace("{P}", p.getName()));
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), color(command));
     }
 
     /**

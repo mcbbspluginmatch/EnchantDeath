@@ -93,7 +93,7 @@ public class ListenerDeathChestRetrieve implements Listener {
                     Msger.sendString(p, "DeathChest.not-special-material");
                     // 限定 Lore 物品索取方式
                 } else if ("SPECIAL-LORE".equalsIgnoreCase(retrieve)) {
-                    if (tool.getItemMeta().getLore() == null || tool.getItemMeta().getLore().size() == 0) {
+                    if (tool.getItemMeta()==null || tool.getItemMeta().getLore() == null || tool.getItemMeta().getLore().size() == 0) {
                         Msger.sendString(p, "DeathChest.no-special-lore");
                         e.setCancelled(true);
                         return;

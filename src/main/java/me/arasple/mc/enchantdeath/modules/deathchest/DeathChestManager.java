@@ -79,7 +79,7 @@ public class DeathChestManager {
             if (dc.isExpired()) {
                 dc.delete();
                 deathChests.remove(dc);
-            } else if (dc.getLocation().distance(block.getLocation()) == 0) {
+            } else if (dc.getLocation().getWorld()== block.getLocation().getWorld() && dc.getLocation().distance(block.getLocation()) == 0) {
                 return dc;
             }
         }
@@ -88,6 +88,9 @@ public class DeathChestManager {
 
     public static boolean retrieve(DeathChest deathChest, Player p) {
         String dropType = EdFiles.getSettings().getString("DeathChest.drop");
+        if (dropType==null){
+            return false;
+        }
         boolean success = false;
         switch (dropType.toUpperCase()) {
             case "INV":
@@ -95,14 +98,14 @@ public class DeathChestManager {
                 if (drop) {
                     Msger.sendString(p, "DeathChest.inv-drop");
                 }
-                success = !success;
+                success = true;
                 break;
             case "INV_FORCE":
                 boolean enough = InvItemsUtils.addToInventoryForce(p.getInventory(), deathChest.getItems());
                 if (!enough) {
                     Msger.sendString(p, "DeathChest.no-enough-space");
                 } else {
-                    success = !success;
+                    success = true;
                 }
                 break;
             case "DROP":
@@ -110,7 +113,7 @@ public class DeathChestManager {
                     p.getLocation().getWorld().dropItemNaturally(p.getLocation(), item);
                 }
                 Msger.sendString(p, "DeathChest.drop");
-                success = !success;
+                success = true;
                 break;
             default:
                 break;

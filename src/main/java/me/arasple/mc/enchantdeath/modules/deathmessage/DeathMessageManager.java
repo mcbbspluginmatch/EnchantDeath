@@ -2,6 +2,7 @@ package me.arasple.mc.enchantdeath.modules.deathmessage;
 
 import me.arasple.mc.enchantdeath.EdFiles;
 import me.arasple.mc.enchantdeath.utils.Msger;
+import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -28,12 +29,12 @@ public class DeathMessageManager {
         unknow = EdFiles.getSettings().getStringList("DeathMessages.unknow");
         EdFiles.getSettings().getConfigurationSection("DeathMessages.causes").getKeys(false).forEach(cause -> {
             cause = cause.toUpperCase();
-            if (EntityDamageEvent.DamageCause.valueOf(cause) != null) {
+            if (ArrayUtils.contains(EntityDamageEvent.DamageCause.values(), cause)) {
                 byCauses.put(cause, EdFiles.getSettings().getStringList("DeathMessages.causes." + cause));
             }
         });
         EdFiles.getSettings().getConfigurationSection("DeathMessages.entity").getKeys(false).forEach(entity -> {
-            if (EntityType.valueOf(entity) != null) {
+            if (ArrayUtils.contains(EntityType.values(), entity)) {
                 byEntity.put(entity, EdFiles.getSettings().getStringList("DeathMessages.entity." + entity));
             }
         });
