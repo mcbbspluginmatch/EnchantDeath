@@ -90,6 +90,7 @@ public class DeathMessageManager {
 
             }
         }
+        Msger.sendTo(Bukkit.getConsoleSender(), message);
     }
 
     private static String getRandomFromListString(List<String> strings) {
