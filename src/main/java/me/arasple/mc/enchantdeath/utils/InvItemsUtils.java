@@ -33,6 +33,7 @@ public class InvItemsUtils {
                 addItemToInv(inventory, item);
             } else {
                 location.getWorld().dropItemNaturally(location, item);
+                //老老实实写true不就行了 非要写bug - a39
                 drop = !drop;
             }
         }

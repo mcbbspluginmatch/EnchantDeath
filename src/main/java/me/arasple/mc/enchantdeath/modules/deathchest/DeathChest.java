@@ -15,6 +15,7 @@ import java.util.UUID;
 /**
  * @author Arasple
  */
+//既然都要储存到yaml为什么不使用ConfigurationSerializable - a39
 public class DeathChest {
 
     private UUID owner;
