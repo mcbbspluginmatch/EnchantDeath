@@ -11,7 +11,7 @@ import me.arasple.mc.enchantdeath.modules.deathmessage.DeathMessageManager;
 import me.arasple.mc.enchantdeath.utils.Msger;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-
+// 有javadoc注释标明作者好评 —— yinyangshi
 /**
  * 附魔死亡 EnchantDeath
  *
